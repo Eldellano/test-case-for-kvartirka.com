@@ -9,7 +9,8 @@ from . import views
 
 urlpatterns = [
     path('posts/', views.PostList.as_view()),
-    path('posts/<int:pk>/', views.PostDetail.as_view())
+    path('posts/<int:pk>/', views.PostDetail.as_view()),
+    path('comment/', views.CommentList.as_view())
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
