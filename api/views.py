@@ -26,6 +26,18 @@ class CommentList(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         if self.request.data:
-            serializer.save(post_id=self.request.data['post'], text=self.request.data['text'])
+            if self.request.data['previous_comment'] == '':  # если ключ пустой
+                previous_comment = None
+            else:
+                previous_comment = self.request.data['previous_comment']
+            serializer.save(post_id=self.request.data['post'], text=self.request.data['text'],
+                            previous_comment=previous_comment)
+
         elif self.request.query_params:
-            serializer.save(post_id=self.request.query_params['post'], text=self.request.query_params['text'])
+            if 'previous_comment' not in self.request.query_params \
+                    or self.request.query_params['previous_comment'] == '':  # если ключ пустой или отсутствует
+                previous_comment = None
+            else:
+                previous_comment = self.request.data['previous_comment']
+            serializer.save(post_id=self.request.query_params['post'], text=self.request.query_params['text'],
+                            previous_comment=previous_comment)
