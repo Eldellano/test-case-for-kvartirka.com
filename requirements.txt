@@ -1,3 +1,4 @@
 Django==3.2.13
 Djangorestframework==3.13.1
 psycopg2==2.9.3
+django-mptt==0.13.4
