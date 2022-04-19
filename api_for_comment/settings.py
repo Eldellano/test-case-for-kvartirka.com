@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'comment_data',
         'USER': 'user_pg',
         'PASSWORD': '123qwerty',
-        'HOST': '127.0.0.1',
+        'HOST': 'postgresql',
         'PORT': '5432',
     }
 }

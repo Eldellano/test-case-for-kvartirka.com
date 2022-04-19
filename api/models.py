@@ -23,4 +23,8 @@ class Comment(MPTTModel):
     text = models.TextField(blank=True, default='')
     parent = TreeForeignKey("Comment", blank=True, null=True, on_delete=models.SET_NULL, default=None,
                             related_name='children')
+    lft = models.PositiveIntegerField(default=None, null=True)
+    rght = models.PositiveIntegerField(default=None, null=True)
+    tree_id = models.PositiveIntegerField(default=None, null=True)
+    level = models.PositiveIntegerField(default=None, null=True)
     mptt.register(Group, order_insertion_by=['name'])
