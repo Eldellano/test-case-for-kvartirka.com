@@ -37,11 +37,6 @@ class CommentList(generics.ListCreateAPIView):
                             parent=parent)
 
         elif self.request.query_params:
-            # if 'parent' not in self.request.query_params \
-            #         or self.request.query_params['parent'] == '':  # если ключ пустой или отсутствует
-            #     parent = None
-            # else:
-            #     parent = self.request.data['parent']
             serializer.save(post_id=self.request.query_params['post'], text=self.request.query_params['text'],
                             parent=self)
 
